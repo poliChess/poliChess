@@ -1,0 +1,6 @@
+[submodule "user-service"]
+	path = user-service
+	url = git@github.com:poliChess/user-service.git
+[submodule "api-gateway"]
+	path = api-gateway
+	url = git@github.com:poliChess/api-gateway.git
