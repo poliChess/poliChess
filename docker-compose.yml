@@ -1,0 +1,28 @@
+version: "3"
+services:
+  user-service:
+    container_name: poliChess-user-service
+    build:
+      dockerfile: Dockerfile
+      context: ./user-service
+    links:
+      - mongo
+
+  api-gateway:
+    container_name: poliChess-api-gateway
+    build:
+      dockerfile: Dockerfile
+      context: ./api-gateway
+    ports: 
+      - 3000:3000
+    links:
+      - user-service
+
+  mongo:
+    container_name: poliChess-mongo
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - ~/data/mongo:/data/db
+    command: mongod --quiet --logpath /dev/null 
