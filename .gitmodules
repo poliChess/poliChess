@@ -4,3 +4,6 @@
 [submodule "api-gateway"]
 	path = api-gateway
 	url = git@github.com:poliChess/api-gateway.git
+[submodule "matchmaking-service"]
+	path = matchmaking-service
+	url = git@github.com:poliChess/matchmaking-service.git
