@@ -34,6 +34,13 @@ services:
       POSTGRES_USER: postgres
   
 
+  game-engine-service:
+    container_name: poliChess-game-engine-service
+    build:
+      dockerfile: Dockerfile
+      context: ./game-engine-service
+
+
   api-gateway:
     container_name: poliChess-api-gateway
     build:
@@ -44,3 +51,4 @@ services:
     links:
       - user-service
       - matchmaking-service
+      - game-engine-service

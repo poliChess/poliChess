@@ -7,3 +7,6 @@
 [submodule "matchmaking-service"]
 	path = matchmaking-service
 	url = git@github.com:poliChess/matchmaking-service.git
+[submodule "game-engine-service"]
+	path = game-engine-service
+	url = git@github.com:poliChess/game-engine-service.git
