@@ -5,6 +5,8 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./user-service
+    ports:
+      - 3001:3000
     links:
       - mongo
 
@@ -21,6 +23,8 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./matchmaking-service
+    ports:
+      - 3002:3000
     links:
       - postgres
 
@@ -39,6 +43,8 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./game-engine-service
+    ports:
+      - 3003:3000
 
 
   websocket-server:
@@ -47,7 +53,8 @@ services:
       dockerfile: Dockerfile
       context: ./websocket-server
     ports: 
-      - 3001:8080
+      - 3004:8080
+      - 3005:8080
     links:
       - game-engine-service
       - matchmaking-service

@@ -10,3 +10,6 @@
 [submodule "game-engine-service"]
 	path = game-engine-service
 	url = git@github.com:poliChess/game-engine-service.git
+[submodule "websocket-server"]
+	path = websocket-server
+	url = git@github.com:poliChess/websocket-server.git
