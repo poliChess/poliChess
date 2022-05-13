@@ -54,7 +54,7 @@ services:
       context: ./websocket-server
     ports: 
       - 3004:8080
-      - 3005:8080
+      - 3005:3000
     links:
       - game-engine-service
       - matchmaking-service
@@ -71,3 +71,14 @@ services:
       - user-service
       - matchmaking-service
       - game-engine-service
+
+
+  frontend:
+    container_name: poliChess-frontend
+    build:
+      dockerfile: Dockerfile
+      context: ./frontend
+    ports:
+      - 8080:3000
+
+

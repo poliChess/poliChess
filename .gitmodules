@@ -13,3 +13,6 @@
 [submodule "websocket-server"]
 	path = websocket-server
 	url = git@github.com:poliChess/websocket-server.git
+[submodule "frontend"]
+	path = frontend
+	url = git@github.com:poliChess/frontend.git
