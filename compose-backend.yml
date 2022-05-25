@@ -41,6 +41,13 @@ services:
       context: ./game-engine-service
 
 
+  redis:
+    container_name: poliChess-redis
+    image: redis
+    volumes:
+      - ~/data/redis:/data/db
+
+
   websocket-server:
     container_name: poliChess-websocket-server
     build:
@@ -49,6 +56,7 @@ services:
     ports: 
       - 3001:8080
     links:
+      - redis
       - game-engine-service
       - matchmaking-service
 
@@ -61,6 +69,7 @@ services:
     ports: 
       - 3000:3000
     links:
+      - redis
       - user-service
       - matchmaking-service
       - game-engine-service
