@@ -5,6 +5,8 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./user-service
+    depends_on:
+      - mongo 
     links:
       - mongo
 
@@ -21,6 +23,8 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./matchmaking-service
+    depends_on:
+      - postgres
     links:
       - postgres
 
@@ -28,7 +32,7 @@ services:
     container_name: poliChess-postgres
     image: postgres
     volumes:
-      - ~/data/postgres:/data/db
+      - ~/data/postgres:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: secret
       POSTGRES_USER: postgres
@@ -45,7 +49,7 @@ services:
     container_name: poliChess-redis
     image: redis
     volumes:
-      - ~/data/redis:/data/db
+      - ~/data/redis:/data
 
 
   websocket-server:
