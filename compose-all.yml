@@ -5,6 +5,8 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./user-service
+    environment:
+      - NODE_ENV=production
     depends_on:
       - mongo 
     links:
@@ -23,6 +25,8 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./matchmaking-service
+    environment:
+      - NODE_ENV=production
     depends_on:
       - postgres
     links:
@@ -44,6 +48,8 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./game-engine-service
+    environment:
+      - NODE_ENV=production
 
 
   redis:
@@ -58,6 +64,8 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./websocket-server
+    environment:
+      - NODE_ENV=production
     ports: 
       - 3001:8080
     links:
@@ -71,6 +79,8 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./api-gateway
+    environment:
+      - NODE_ENV=production
     ports: 
       - 3000:3000
     links:
@@ -85,5 +95,8 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./frontend
+    environment:
+      - NODE_ENV=production
+      - REACT_APP_API=192.168.0.100
     ports:
       - 3002:3000
