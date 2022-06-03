@@ -1,0 +1,89 @@
+version: "3.1"
+services:
+  user-service:
+    container_name: poliChess-user-service
+    build:
+      dockerfile: Dockerfile
+      context: ./user-service
+    depends_on:
+      - mongo 
+    links:
+      - mongo
+
+  mongo:
+    container_name: poliChess-mongo
+    image: mongo
+    volumes:
+      - ~/data/mongo:/data/db
+    command: mongod --quiet --logpath /dev/null 
+
+
+  matchmaking-service:
+    container_name: poliChess-matchmaking-service
+    build:
+      dockerfile: Dockerfile
+      context: ./matchmaking-service
+    depends_on:
+      - postgres
+    links:
+      - postgres
+
+  postgres: 
+    container_name: poliChess-postgres
+    image: postgres
+    volumes:
+      - ~/data/postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: secret
+      POSTGRES_USER: postgres
+    command: postgres -c stats_temp_directory=/tmp
+  
+
+  game-engine-service:
+    container_name: poliChess-game-engine-service
+    build:
+      dockerfile: Dockerfile
+      context: ./game-engine-service
+
+
+  redis:
+    container_name: poliChess-redis
+    image: redis
+    volumes:
+      - ~/data/redis:/data
+
+
+  websocket-server:
+    container_name: poliChess-websocket-server
+    build:
+      dockerfile: Dockerfile
+      context: ./websocket-server
+    ports: 
+      - 3001:8080
+    links:
+      - redis
+      - game-engine-service
+      - matchmaking-service
+
+
+  api-gateway:
+    container_name: poliChess-api-gateway
+    build:
+      dockerfile: Dockerfile
+      context: ./api-gateway
+    ports: 
+      - 3000:3000
+    links:
+      - redis
+      - user-service
+      - matchmaking-service
+      - game-engine-service
+
+
+  frontend:
+    container_name: poliChess-frontend
+    build:
+      dockerfile: Dockerfile
+      context: ./frontend
+    ports:
+      - 3002:3000
