@@ -29,15 +29,17 @@ Frontend Features:
 After cloning, run `git submodule init && git submodule update` to pull all submodules
 
 ## Building
-Build backend services
+ Build backend services
 `docker-compose -f compose-backend.yml build`
-Build backend services + frontend
+
+ Build backend services + frontend
 `docker-compose -f compose-all.yml build`
 
 ## Running
-Start backend 
+ Start backend 
 `docker-compose -f compose-backend.yml up`
-Start backend + frontend
+
+ Start backend + frontend
 `docker-compose -f compose-all.yml up`
  
 By default, the ports are:
