@@ -16,3 +16,6 @@
 [submodule "frontend"]
 	path = frontend
 	url = git@github.com:poliChess/frontend.git
+[submodule "service-discovery"]
+	path = service-discovery
+	url = git@github.com:poliChess/service-discovery.git
