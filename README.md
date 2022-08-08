@@ -13,8 +13,9 @@ This is the master repository containing all the services and frontend
 
 Backend Features:
 * service-oriented architecture
-* graphql for main API, websockets for games and REST for intra-service communication
+* graphql for main API, websockets for games and REST and gRPC for intra-service communication
 * JWT authentication
+* service discovery
 * using Redis to cache service calls
 * Google Sing-In integration
 * fully containerized with Docker
@@ -36,12 +37,12 @@ After cloning, run `git submodule init && git submodule update` to pull all subm
 `docker-compose -f compose-all.yml build`
 
 ## Running
- Start backend 
+ Start backend
 `docker-compose -f compose-backend.yml up`
 
  Start backend + frontend
 `docker-compose -f compose-all.yml up`
- 
+
 By default, the ports are:
  - 3000: graphql API
  - 3001: websockets
