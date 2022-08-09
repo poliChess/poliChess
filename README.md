@@ -11,6 +11,8 @@ Online Chess platform
 ## Project for learning full stack development
 This is the master repository containing all the services and frontend
 
+<img src="./arch.svg">
+
 Backend Features:
 * service-oriented architecture
 * graphql for main API, websockets for games and REST and gRPC for intra-service communication
