@@ -43,7 +43,7 @@ services:
 
   postgres:
     container_name: poliChess-postgres
-    image: postgres
+    image: postgres:14-alpine
     volumes:
       - ~/data/postgres:/var/lib/postgresql/data
     environment:
